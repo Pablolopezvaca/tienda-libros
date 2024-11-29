@@ -1,0 +1,408 @@
+:root {
+  /* Variables de colores: puedes cambiar según la opción elegida */
+  --color-primario: #2C3E50; /* Azul oscuro */
+  --color-secundario: #ECF0F1; /* Gris claro */
+  --color-detalle: #E67E22; /* Naranja */
+  --color-texto: #333333; /* Texto principal */
+  --color-fondo: #FFFFFF; /* Fondo general */
+  height: 100%; /* El documento ocupa toda la ventana */
+  
+}
+
+/* Estilo global para el documento */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho/alto */
+}
+
+/* Fondo y color base */
+body {
+  font-family: 'Open Sans', Arial, sans-serif; /* Fuente principal */
+  background-color: var(--color-secundario); /* Fondo suave */
+  color: var(--color-texto); /* Texto estándar */
+  line-height: 1.6; /* Mejora la legibilidad */
+  height: 100%; /* El documento ocupa toda la ventana */
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  padding: 20px 10px;
+  text-align: center;
+  border-bottom: 5px solid var(--color-detalle);
+  top: 0;
+}
+
+/* Estilo global para encabezados */
+h2, h3 {
+  font-family: 'Montserrat', sans-serif; /* Fuente para encabezados */
+  color: var(--color-texto); /* Color destacado */
+}
+
+/* Estilo del h1 */
+header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem; /* Tamaño del texto */
+  color: var(--color-fondo);
+}
+
+/* Estilo del nav */
+header nav {
+  margin-top: 10px; /* Espacio entre el título y la navegación */
+}
+
+/* Estilo para enlaces */
+a {
+  color: var(--color-primario);
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+a:hover {
+  color: var(--color-detalle); /* Cambia el color al pasar el cursor */
+}
+
+/* Estilo de la lista del menú */
+header nav ul {
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex; /* Coloca los elementos en fila */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  gap: 15px; /* Espacio entre los elementos */
+}
+
+/* Estilo de los enlaces */
+header nav ul li a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: var(--color-fondo); /* Blanco */
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 15px; /* Espaciado interno */
+  position: relative;
+}
+
+/* Subrayado animado */
+header nav ul li a::after {
+  content: ""; /* Genera el pseudo-elemento */
+  position: absolute; /* Relativo al enlace */
+  bottom: 0; /* Posicionado al final del enlace */
+  left: 50%; /* Comienza en el centro */
+  width: 0%; /* El subrayado inicia invisible */
+  height: 2px; /* Grosor de la línea */
+  background-color: var(--color-detalle); /* Color del subrayado */
+  transition: all 0.3s ease; /* Efecto suave */
+  transform: translateX(-50%); /* Centra el subrayado */
+}
+
+/* Efecto al pasar el mouse */
+header nav ul li a:hover::after {
+  width: 75%; /* La línea se extiende completamente */
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-primario);
+  color: var(--color-fondo);
+  text-align: center;
+  padding: 20px;
+}
+
+main {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  flex: 1; /* Toma todo el espacio disponible */
+}
+
+
+/* Página Index */
+/* Estilo para el contenedor principal */
+.contenedor-principal {
+  display: flex; /* Divide el espacio en columnas */
+  gap: 20px; /* Espacio entre columnas */
+  padding: 20px;
+}
+
+/* Columna izquierda */
+.columna-izquierda {
+  flex: 3; /* Ocupa más espacio que la columna derecha */
+  display: flex;
+  flex-wrap:wrap;
+  gap: 20px; /* Espacio entre secciones */
+}
+
+/* Columna derecha */
+.columna-derecha {
+  flex: 1; /* Ocupa menos espacio que la izquierda */
+  display: flex;
+  gap: 20px;
+}
+
+/* Estilo para secciones */
+#presentacion, #libro-del-mes, #categorias {
+  padding: 15px;
+  background-color: var(--color-fondo); /* Fondo claro */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 6px 9px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Espaciado entre encabezados y párrafos */
+#presentacion h2, #libro-del-mes h2, #categorias h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-primario);
+  margin-bottom: 10px;
+}
+
+
+/* Página Categorías */
+/* Estilo para la sección de categorías */
+#categorias {
+  padding: 30px;
+  background-color: var(--color-fondo); /* Fondo claro */
+  border-radius: 5px;
+  box-shadow: 0 6px 9px rgba(0, 0, 0, 0.2);
+}
+
+#categorias article {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-detalle); /* Línea divisoria entre categorías */
+}
+
+#categorias article:last-child {
+  border-bottom: none; /* Sin línea para el último artículo */
+}
+
+/* Oculta el texto inicialmente */
+#categorias article p {
+  display: none;
+  margin: 10px 0 0;
+  line-height: 1.5;
+}
+
+/* Muestra el texto cuando el checkbox está marcado */
+#categorias article .toggle:checked + label + p {
+  display: block;
+}
+
+/* Estilo para el checkbox */
+#categorias article .toggle {
+  margin-right: 10px; /* Espacio entre el checkbox y el texto */
+  accent-color: var(--color-primario); /* Cambia el color del checkbox */
+}
+
+/* Estilo para el label */
+#categorias article label {
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-primario);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Imágenes dentro de los párrafos */
+p img {
+  float: left; /* La imagen se posiciona a la izquierda */
+  max-width: 150px; /* Limita el ancho de la imagen */
+  height: auto; /* Mantiene las proporciones */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+  margin-bottom: 0px; /* Espacio debajo de la imagen */
+}
+
+/* Página Libros */
+/* Contenedor principal del catálogo */
+#catalogo {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a nuevas filas */
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 20px; /* Espacio interno del catálogo */
+  justify-content: center; /* Centra las tarjetas en la galería */
+  background-color: var(--color-secundario); /* Fondo suave */
+}
+
+/* Estilo de las secciones individuales (tarjetas de libros) */
+#catalogo section {
+  flex: 1 1 calc(33.333% - 20px); /* Ancho flexible: 3 columnas */
+  max-width: 400px; /* Máximo ancho de las tarjetas */
+  background-color: var(--color-fondo); /* Fondo claro */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra decorativa */
+  overflow: hidden; /* Oculta contenido que exceda el tamaño */
+  text-align: center; /* Centra el contenido */
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efecto suave */
+}
+
+/* Efecto al pasar el mouse sobre las tarjetas */
+#catalogo section:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Intensifica la sombra */
+}
+
+/* Estilo para las imágenes */
+#catalogo section img {
+  max-width: 100%; /* Asegura que las imágenes no se desborden */
+  height: auto; /* Mantiene las proporciones */
+  border-radius: 5px; /* Bordes redondeados para las imágenes */
+  margin-bottom: 10px; /* Espacio inferior */
+}
+
+/* Estilo para los títulos */
+#catalogo section h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem; /* Tamaño del título */
+  color: var(--color-primario);
+  margin: 10px 0;
+}
+
+/* Estilo para los párrafos */
+#catalogo section p {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Página Noticias */
+/* Estilo general del contenedor principal */
+#noticias {
+  max-width: 100rem; /* Limita el ancho para un diseño centrado */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+  padding: 20px;
+  font-family: 'Arial', sans-serif; /* Fuente sencilla y fácil de leer */
+  background-color: var(--color-fondo); /* Fondo claro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Artículos individuales */
+#noticias article {
+  margin-bottom: 20px; /* Espacio entre los artículos */
+  padding: 15px;
+  background-color: var(--color-secundario); /* Fondo de cada artículo */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Títulos de los artículos */
+#noticias article h3 {
+  font-size: 1.4rem;
+  color: var(--color-primario); /* Color del título */
+  margin-bottom: 10px;
+}
+
+/* Párrafos de los artículos */
+#noticias article p {
+  font-size: 1rem;
+  color: var(--color-texto); /* Color del texto */
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* Enlaces */
+#noticias article a {
+  display: inline-block; /* Hace que el enlace sea más visible */
+  color: var(--color-detalle); /* Color de enlace */
+  font-weight: bold;
+  text-decoration: none; /* Sin subrayado */
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: var(--color-primario); /* Fondo del botón */
+  color: #fff; /* Texto blanco */
+  transition: background-color 0.2s ease;
+}
+
+/* Hover en enlaces */
+#noticias article a:hover {
+  background-color: var(--color-secundario); /* Cambia el fondo al pasar el mouse */
+  color: var(--color-primario); /* Cambia el texto al color principal */
+}
+
+/* Página Contactos */
+/* Contenedor principal */
+.contenedor-principal-contacto {
+  display: flex;
+  gap: 20px; /* Espacio entre las columnas */
+  padding: 30px;
+  max-width: 900px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centra el contenido */
+  background-color: var(--color-fondo); /* Fondo general */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo para el formulario */
+form {
+  background-color: var(--color-secundario); /* Fondo claro */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--color-primario);
+}
+
+form input,
+form textarea {
+  width: 100%; /* Los campos ocupan todo el ancho */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Borde ligero */
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: var(--color-primario);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--color-detalle); /* Cambia el color al pasar el mouse */
+}
+
+/* Estilo para la sección de redes sociales */
+aside {
+  background-color: var(--color-secundario);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+aside h2 {
+  color: var(--color-primario);
+  margin-bottom: 35px;
+}
+
+aside ul {
+  list-style: none; /* Elimina los puntos de la lista */
+}
+
+aside ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+aside ul li i {
+  font-size: 1.5rem; /* Tamaño del icono */
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+  color: var(--color-primario);
+}
+
+aside ul li a {
+  text-decoration: none;
+  color: var(--color-primario);
+  font-weight: bold;
+}
+
+aside ul li a:hover {
+  color: var(--color-detalle); /* Cambia el color al pasar el mouse */
+}
